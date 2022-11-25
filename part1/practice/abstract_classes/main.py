@@ -19,7 +19,7 @@
 #    - Катер остановился
 # Car:
 #    - Машина заурчала двигателем
-#    - Машина стоит с заглушенным двигателем
+#    - Машина заурчала двигателем
 #    - Машина едет к цели назначения
 #    - Машина остановилась
 # Electroscooter:
@@ -44,6 +44,73 @@
 
 # Отрезок кода для самопроверки.
 # Запустите его, после того как выполните задание
+from abc import abstractmethod, ABC
+
+
+class Transpotrt(ABC):
+    @abstractmethod
+    def start_engine(self):
+        pass
+
+    @abstractmethod
+    def stop_engine(self):
+        pass
+
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def stop(self):
+        pass
+
+
+class Boat(Transpotrt):
+    def start_engine(self):
+        print('Катер громко затарахтел')
+
+    def stop_engine(self):
+        print('Двигатель катера чихнул напоследок и заглох')
+
+    def move(self):
+        print('Катер быстро набирает скорость')
+
+    def stop(self):
+        print('Катер остановился')
+
+class Car(Transpotrt):
+    def start_engine(self):
+        print('Машина заурчала двигателем')
+
+    def stop_engine(self):
+        print('Машина заурчала двигателем')
+
+    def move(self):
+        print('Машина едет к цели назначения')
+
+    def stop(self):
+        print('Машина остановилась')
+
+class Electroscooter(Transpotrt):
+    def start_engine(self):
+        print('Мигнул светодиодом')
+
+    def stop_engine(self):
+        print('Мигнул светодиодом дважды')
+
+    def move(self):
+        print('Прохожие в ужасе разбегаются от очередного камикадзе')
+
+    def stop(self):
+        print('Торможение об стену прошло успешно')
+class Person:
+    def use_transport(self, transport):
+        transport.start_engine()
+        transport.stop_engine()
+        transport.move()
+        transport.stop()
+
+
 if __name__ == '__main__':
     boat = Boat()
     car = Car()
